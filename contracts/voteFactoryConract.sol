@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "./votingContract.sol";
 
 contract VotingPollFactory {
-    address[] public deployedPolls;
+    address[] public checkDeployedPolls;
 
     event PollDeployed(address indexed pollAddress, address indexed owner);
 
@@ -13,12 +13,12 @@ contract VotingPollFactory {
         string[] memory _options
     ) external {
         VotingPoll newPoll = new VotingPoll(_pollQuestion, _options);
-        deployedPolls.push(address(newPoll));
+        checkDeployedPolls.push(address(newPoll));
 
         emit PollDeployed(address(newPoll), msg.sender);
     }
 
     function getDeployedPolls() external view returns (address[] memory) {
-        return deployedPolls;
+        return checkDeployedPolls;
     }
 }
