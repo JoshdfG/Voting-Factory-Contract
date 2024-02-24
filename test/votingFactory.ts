@@ -92,8 +92,6 @@ describe("Voting-poll-factory", function () {
       );
       const voteEventLogs = await votingPoll.queryFilter(voteEvent);
       expect(voteEventLogs.length).to.equal(1);
-
-      // Add more assertions based on your contract's logic
     });
 
     it("Should revert when a user tries to vote multiple times", async function () {
@@ -111,8 +109,6 @@ describe("Voting-poll-factory", function () {
       await expect(
         votingPollWithOtherAccount.vote(optionToVote)
       ).to.be.revertedWithCustomError(votingPoll, "YOU_HAVE_ALREADY_VOTED");
-
-      // Add more assertions based on your contract's logic
     });
 
     it("Should revert when a user tries to vote with an invalid option", async function () {
